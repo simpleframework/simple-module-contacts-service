@@ -9,7 +9,12 @@
   </parent>
   <artifactId>simple-module-contacts-service</artifactId>
   <version>1.0-SNAPSHOT</version>
-   
+
   <dependencies>
+    <dependency>
+      <groupId>net.simpleframework</groupId>
+      <artifactId>simple-module-common</artifactId>
+      <version>${simple.module.common}</version>
+    </dependency>
   </dependencies>
 </project>
