@@ -9,6 +9,8 @@
   </parent>
   <artifactId>simple-module-contacts-service</artifactId>
   <version>1.0-SNAPSHOT</version>
+   
   <dependencies>
+  
   </dependencies>
 </project>
