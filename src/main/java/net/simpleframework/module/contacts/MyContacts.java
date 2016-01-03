@@ -9,6 +9,7 @@ import net.simpleframework.common.ID;
  *         http://www.simpleframework.net
  */
 public class MyContacts extends Contacts {
+
 	/* 联系人owner */
 	private ID ownerId;
 
@@ -20,5 +21,5 @@ public class MyContacts extends Contacts {
 		this.ownerId = ownerId;
 	}
 
-	private static final long serialVersionUID = 385737627230107313L;
+	private static final long serialVersionUID = 5577569032897307653L;
 }
