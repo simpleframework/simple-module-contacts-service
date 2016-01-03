@@ -35,6 +35,9 @@ public class Contacts extends AbstractTextDescriptionBean {
 	/* 工作电话2 */
 	private String workphone2;
 
+	/* 传真 */
+	private String fax;
+
 	/* 家庭电话 */
 	private String homephone;
 
@@ -133,6 +136,14 @@ public class Contacts extends AbstractTextDescriptionBean {
 
 	public void setHomephone(final String homephone) {
 		this.homephone = homephone;
+	}
+
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(final String fax) {
+		this.fax = fax;
 	}
 
 	public String getWorkaddress() {
