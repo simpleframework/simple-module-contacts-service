@@ -8,7 +8,7 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>simple-module-contacts-service</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>${simple.module.contacts.service}</version>
 
   <dependencies>
     <dependency>
