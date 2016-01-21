@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sql-script>
+	<version>1.0.0</version>
+	<name>contacts</name>
+	<description>contacts database script.</description>
+	<tran-sql>
+		<description></description>
+    <![CDATA[
+      
+    ]]>
+	</tran-sql>
+</sql-script>
