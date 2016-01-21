@@ -4,9 +4,100 @@
   <name>contacts</name>
   <description>contacts database script.</description>
   <tran-sql>
-    <description></description>
     <![CDATA[
-      
+      create table sf_contacts (
+        id char (32) not null,
+        orgid char (32),
+        text varchar2 (32) not null,
+        sex varchar2 (2) not null,
+        birthday date,
+        dept varchar2 (64),
+        job varchar2 (64),
+        email varchar2 (32),
+        mobile varchar2 (16),
+        workphone varchar2 (16),
+        workphone2 varchar2 (16),
+        fax varchar2 (16),
+        homephone varchar2 (16),
+        workaddress varchar2 (256),
+        homeaddress varchar2 (256),
+        postcode varchar2 (8),
+        qq varchar2 (16),
+        weixin varchar2 (16),
+        description varchar2 (256),
+        userid char (32),
+        deptid char (32),
+        primary key (id)
+      );
+    ]]>
+  </tran-sql>
+  <tran-sql>
+    <![CDATA[
+      create table sf_contacts_tag (
+        id char (32) not null,
+        orgid char (32),
+        text varchar2 (32) not null,
+        description varchar2 (256),
+        oorder number(11) not null,
+        contacts number(11) not null,
+        primary key (id),
+        unique (oorder)
+      );
+    ]]>
+  </tran-sql>
+  <tran-sql>
+    <![CDATA[
+      create table sf_contacts_tagr (
+        id char(32) not null,
+        tagid char(32) not null,
+        contactsid char(32) not null,
+        primary key(id),
+        unique(tagid, contactsid)
+      );
+    ]]>
+  </tran-sql>
+  <tran-sql>
+    <![CDATA[
+      create table sf_mycontacts (
+        id char (32) not null,
+        ownerid char (32) not null,
+        orgid char (32),
+        text varchar2 (32) not null,
+        sex varchar2 (2) not null,
+        birthday date,
+        dept varchar2 (64),
+        job varchar2 (64),
+        email varchar2 (32),
+        mobile varchar2 (16),
+        workphone varchar2 (16),
+        workphone2 varchar2 (16),
+        fax varchar2 (16),
+        homephone varchar2 (16),
+        workaddress varchar2 (256),
+        homeaddress varchar2 (256),
+        postcode varchar2 (8),
+        qq varchar2 (16),
+        weixin varchar2 (16),
+        description varchar2 (256),
+        userid char (32),
+        deptid char (32),
+        primary key (id)
+      );
+    ]]>
+  </tran-sql>
+  <tran-sql>
+    <![CDATA[
+      create table sf_mycontacts_tag (
+        id char (32) not null,
+        ownerid char (32) not null,
+        orgid char (32),
+        text varchar2 (32) not null,
+        description varchar2 (256),
+        oorder number(11) not null,
+        contacts number(11) not null,
+        primary key (id),
+        unique (oorder)
+      );
     ]]>
   </tran-sql>
 </sql-script>
