@@ -11,4 +11,6 @@ import net.simpleframework.ctx.IModuleContext;
 public interface IContactsContext extends IModuleContext {
 
 	static String MODULE_NAME = "simple-module-contacts";
+
+	IContactsService getContactsService();
 }

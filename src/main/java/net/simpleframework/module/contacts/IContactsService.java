@@ -9,5 +9,4 @@ import net.simpleframework.ctx.service.ado.db.IDbBeanService;
  *         http://www.simpleframework.net
  */
 public interface IContactsService extends IDbBeanService<Contacts> {
-
 }

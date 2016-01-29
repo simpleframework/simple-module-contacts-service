@@ -8,13 +8,15 @@ import net.simpleframework.module.contacts.Contacts;
 import net.simpleframework.module.contacts.ContactsTag;
 import net.simpleframework.module.contacts.ContactsTagR;
 import net.simpleframework.module.contacts.IContactsContext;
+import net.simpleframework.module.contacts.IContactsService;
 import net.simpleframework.module.contacts.MyContacts;
 import net.simpleframework.module.contacts.MyContactsTag;
 
 /**
  * Licensed under the Apache License, Version 2.0
  * 
- * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
+ * @author 陈侃(cknet@126.com, 13910090885)
+ *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
 public class ContactsContext extends AbstractModuleContext implements IContactsContext {
@@ -32,4 +34,8 @@ public class ContactsContext extends AbstractModuleContext implements IContactsC
 		return new Module().setName(MODULE_NAME).setText($m("ContactsContext.0")).setOrder(3);
 	}
 
+	@Override
+	public IContactsService getContactsService() {
+		return singleton(ContactsService.class);
+	}
 }
