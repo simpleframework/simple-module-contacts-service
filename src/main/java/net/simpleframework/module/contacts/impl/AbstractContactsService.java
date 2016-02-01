@@ -3,6 +3,7 @@ package net.simpleframework.module.contacts.impl;
 import java.io.Serializable;
 
 import net.simpleframework.ctx.service.ado.db.AbstractDbBeanService;
+import net.simpleframework.module.contacts.IContactsContextAware;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -12,5 +13,5 @@ import net.simpleframework.ctx.service.ado.db.AbstractDbBeanService;
  *         http://www.simpleframework.net
  */
 public abstract class AbstractContactsService<T extends Serializable> extends
-		AbstractDbBeanService<T> {
+		AbstractDbBeanService<T> implements IContactsContextAware {
 }
