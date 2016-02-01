@@ -1,5 +1,7 @@
 package net.simpleframework.module.contacts;
 
+import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.common.ID;
 import net.simpleframework.ctx.service.ado.db.IDbBeanService;
 
 /**
@@ -10,4 +12,21 @@ import net.simpleframework.ctx.service.ado.db.IDbBeanService;
  */
 public interface IContactsTagService extends IDbBeanService<ContactsTag> {
 
+	/**
+	 * 添加联系人标签
+	 * 
+	 * @param orgId
+	 * @param text
+	 * @param description
+	 * @return
+	 */
+	ContactsTag addContactsTag(ID orgId, String text, String description);
+
+	/**
+	 * 查询机构下标签
+	 * 
+	 * @param orgId
+	 * @return
+	 */
+	IDataQuery<ContactsTag> queryTags(ID orgId);
 }

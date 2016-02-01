@@ -1,5 +1,7 @@
 package net.simpleframework.module.contacts.impl;
 
+import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.common.ID;
 import net.simpleframework.module.contacts.ContactsTag;
 import net.simpleframework.module.contacts.IContactsTagService;
 
@@ -12,4 +14,14 @@ import net.simpleframework.module.contacts.IContactsTagService;
  */
 public class ContactsTagService extends AbstractContactsService<ContactsTag> implements
 		IContactsTagService {
+
+	@Override
+	public ContactsTag addContactsTag(final ID orgId, final String text, final String description) {
+		return null;
+	}
+
+	@Override
+	public IDataQuery<ContactsTag> queryTags(final ID orgId) {
+		return null;
+	}
 }
