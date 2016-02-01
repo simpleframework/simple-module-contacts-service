@@ -1,7 +1,8 @@
 package net.simpleframework.module.contacts.impl;
 
-import net.simpleframework.module.contacts.Contacts;
-import net.simpleframework.module.contacts.IContactsService;
+import java.io.Serializable;
+
+import net.simpleframework.ctx.service.ado.db.AbstractDbBeanService;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -10,5 +11,6 @@ import net.simpleframework.module.contacts.IContactsService;
  *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class ContactsService extends AbstractContactsService<Contacts> implements IContactsService {
+public abstract class AbstractContactsService<T extends Serializable> extends
+		AbstractDbBeanService<T> {
 }

@@ -9,6 +9,8 @@ import net.simpleframework.module.contacts.ContactsTag;
 import net.simpleframework.module.contacts.ContactsTagR;
 import net.simpleframework.module.contacts.IContactsContext;
 import net.simpleframework.module.contacts.IContactsService;
+import net.simpleframework.module.contacts.IContactsTagRService;
+import net.simpleframework.module.contacts.IContactsTagService;
 import net.simpleframework.module.contacts.MyContacts;
 import net.simpleframework.module.contacts.MyContactsTag;
 
@@ -37,5 +39,15 @@ public class ContactsContext extends AbstractModuleContext implements IContactsC
 	@Override
 	public IContactsService getContactsService() {
 		return singleton(ContactsService.class);
+	}
+
+	@Override
+	public IContactsTagService getContactsTagService() {
+		return singleton(ContactsTagService.class);
+	}
+
+	@Override
+	public IContactsTagRService getContactsTagRService() {
+		return singleton(ContactsTagRService.class);
 	}
 }

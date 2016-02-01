@@ -1,7 +1,7 @@
 package net.simpleframework.module.contacts.impl;
 
-import net.simpleframework.module.contacts.Contacts;
-import net.simpleframework.module.contacts.IContactsService;
+import net.simpleframework.module.contacts.ContactsTagR;
+import net.simpleframework.module.contacts.IContactsTagRService;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -10,5 +10,6 @@ import net.simpleframework.module.contacts.IContactsService;
  *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class ContactsService extends AbstractContactsService<Contacts> implements IContactsService {
+public class ContactsTagRService extends AbstractContactsService<ContactsTagR> implements
+		IContactsTagRService {
 }

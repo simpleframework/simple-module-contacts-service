@@ -12,5 +12,24 @@ public interface IContactsContext extends IModuleContext {
 
 	static String MODULE_NAME = "simple-module-contacts";
 
+	/**
+	 * 获取联系人服务
+	 * 
+	 * @return
+	 */
 	IContactsService getContactsService();
+
+	/**
+	 * 获取联系人标签服务
+	 * 
+	 * @return
+	 */
+	IContactsTagService getContactsTagService();
+
+	/**
+	 * 获取联系人标签关系服务
+	 * 
+	 * @return
+	 */
+	IContactsTagRService getContactsTagRService();
 }
