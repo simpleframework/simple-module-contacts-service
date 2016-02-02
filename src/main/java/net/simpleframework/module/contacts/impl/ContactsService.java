@@ -1,5 +1,8 @@
 package net.simpleframework.module.contacts.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.common.ID;
 import net.simpleframework.module.contacts.Contacts;
@@ -16,6 +19,12 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 
 	@Override
 	public IDataQuery<Contacts> queryContacts(final ID orgId) {
-		return null;
+		final StringBuilder sb = new StringBuilder("1=1");
+		final List<Object> params = new ArrayList<Object>();
+		if (orgId != null) {
+			sb.append(" and (orgid=? or orgid is null)");
+			params.add(orgId);
+		}
+		return query(sb, params.toArray());
 	}
 }
