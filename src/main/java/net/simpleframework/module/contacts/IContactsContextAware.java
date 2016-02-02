@@ -16,4 +16,5 @@ public interface IContactsContextAware extends IModuleContextAware {
 	static IContactsService _contactsService = contactsContext.getContactsService();
 
 	static IContactsTagService _contactsTagService = contactsContext.getContactsTagService();
+	static IContactsTagRService _contactsTagRService = contactsContext.getContactsTagRService();
 }

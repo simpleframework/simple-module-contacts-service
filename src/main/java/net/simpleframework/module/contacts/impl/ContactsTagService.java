@@ -3,6 +3,8 @@ package net.simpleframework.module.contacts.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.simpleframework.ado.IParamsValue;
+import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.common.ID;
 import net.simpleframework.module.contacts.ContactsTag;
@@ -32,5 +34,23 @@ public class ContactsTagService extends AbstractContactsService<ContactsTag> imp
 			params.add(orgId);
 		}
 		return query(sb, params.toArray());
+	}
+
+	@Override
+	public void onInit() throws Exception {
+		super.onInit();
+
+		addListener(new DbEntityAdapterEx<ContactsTag>() {
+			@Override
+			public void onBeforeDelete(final IDbEntityManager<ContactsTag> manager,
+					final IParamsValue paramsValue) throws Exception {
+				super.onBeforeDelete(manager, paramsValue);
+
+				for (final ContactsTag tag : coll(manager, paramsValue)) {
+					// 删除关系
+					_contactsTagRService.deleteWith("tagid=?", tag.getId());
+				}
+			}
+		});
 	}
 }
