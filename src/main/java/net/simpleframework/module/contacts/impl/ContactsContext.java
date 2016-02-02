@@ -2,7 +2,7 @@ package net.simpleframework.module.contacts.impl;
 
 import static net.simpleframework.common.I18n.$m;
 import net.simpleframework.ado.db.DbEntityTable;
-import net.simpleframework.ctx.AbstractModuleContext;
+import net.simpleframework.ctx.AbstractADOModuleContext;
 import net.simpleframework.ctx.Module;
 import net.simpleframework.module.contacts.Contacts;
 import net.simpleframework.module.contacts.ContactsTag;
@@ -21,7 +21,7 @@ import net.simpleframework.module.contacts.MyContactsTag;
  *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class ContactsContext extends AbstractModuleContext implements IContactsContext {
+public class ContactsContext extends AbstractADOModuleContext implements IContactsContext {
 
 	protected DbEntityTable[] createEntityTables() {
 		return new DbEntityTable[] { new DbEntityTable(Contacts.class, "sf_contacts"),
