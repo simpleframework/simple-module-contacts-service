@@ -1,5 +1,7 @@
 package net.simpleframework.module.contacts;
 
+import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.common.ID;
 import net.simpleframework.ctx.service.ado.db.IDbBeanService;
 
 /**
@@ -9,4 +11,11 @@ import net.simpleframework.ctx.service.ado.db.IDbBeanService;
  *         http://www.simpleframework.net
  */
 public interface IContactsService extends IDbBeanService<Contacts> {
+
+	/**
+	 * 
+	 * @param orgId
+	 * @return
+	 */
+	IDataQuery<Contacts> queryContacts(ID orgId);
 }

@@ -1,5 +1,7 @@
 package net.simpleframework.module.contacts.impl;
 
+import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.common.ID;
 import net.simpleframework.module.contacts.Contacts;
 import net.simpleframework.module.contacts.IContactsService;
 
@@ -11,4 +13,9 @@ import net.simpleframework.module.contacts.IContactsService;
  *         http://www.simpleframework.net
  */
 public class ContactsService extends AbstractContactsService<Contacts> implements IContactsService {
+
+	@Override
+	public IDataQuery<Contacts> queryContacts(final ID orgId) {
+		return null;
+	}
 }
