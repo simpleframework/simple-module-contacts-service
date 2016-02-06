@@ -23,6 +23,7 @@ import net.simpleframework.module.contacts.MyContactsTag;
  */
 public class ContactsContext extends AbstractADOModuleContext implements IContactsContext {
 
+	@Override
 	protected DbEntityTable[] createEntityTables() {
 		return new DbEntityTable[] { new DbEntityTable(Contacts.class, "sf_contacts"),
 				new DbEntityTable(ContactsTag.class, "sf_contacts_tag"),

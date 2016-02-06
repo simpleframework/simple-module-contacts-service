@@ -2,6 +2,8 @@ package net.simpleframework.module.contacts.impl;
 
 import net.simpleframework.ado.IParamsValue;
 import net.simpleframework.ado.db.IDbEntityManager;
+import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.module.contacts.Contacts;
 import net.simpleframework.module.contacts.ContactsTag;
 import net.simpleframework.module.contacts.ContactsTagR;
 import net.simpleframework.module.contacts.IContactsTagRService;
@@ -15,6 +17,20 @@ import net.simpleframework.module.contacts.IContactsTagRService;
  */
 public class ContactsTagRService extends AbstractContactsService<ContactsTagR> implements
 		IContactsTagRService {
+
+	@Override
+	public ContactsTagR addSubjectTagR(final Contacts contacts, final ContactsTag tag) {
+		final ContactsTagR tagr = createBean();
+		tagr.setContactsId(contacts.getId());
+		tagr.setTagId(tag.getId());
+		insert(tagr);
+		return tagr;
+	}
+
+	@Override
+	public IDataQuery<ContactsTagR> queryTagRs(final Contacts contacts) {
+		return query("contactsId=?", contacts.getId());
+	}
 
 	@Override
 	public void onInit() throws Exception {
