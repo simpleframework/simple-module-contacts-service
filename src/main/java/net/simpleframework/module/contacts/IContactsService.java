@@ -15,7 +15,8 @@ public interface IContactsService extends IDbBeanService<Contacts> {
 	/**
 	 * 
 	 * @param orgId
+	 * @param tags
 	 * @return
 	 */
-	IDataQuery<Contacts> queryContacts(ID orgId);
+	IDataQuery<Contacts> queryContacts(ID orgId, ContactsTag... tags);
 }
