@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.simpleframework.ado.db.common.SQLValue;
+import net.simpleframework.ado.query.DataQueryUtils;
 import net.simpleframework.ado.query.IDataQuery;
-import net.simpleframework.module.contacts.Contacts;
 import net.simpleframework.module.contacts.ContactsTag;
 import net.simpleframework.module.contacts.ContactsTagR;
-import net.simpleframework.module.contacts.IContactsService;
+import net.simpleframework.module.contacts.IMyContactsService;
+import net.simpleframework.module.contacts.MyContacts;
+import net.simpleframework.module.contacts.MyContactsTag;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -17,21 +19,23 @@ import net.simpleframework.module.contacts.IContactsService;
  *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class ContactsService extends AbstractContactsService<Contacts> implements IContactsService {
+public class MyContactsService extends AbstractContactsService<MyContacts> implements
+		IMyContactsService {
 
 	@Override
-	public IDataQuery<Contacts> queryContacts(final Object org, final ContactsTag... tags) {
+	public IDataQuery<MyContacts> queryMyContacts(final Object user, final MyContactsTag... tags) {
+		if (user == null) {
+			return DataQueryUtils.nullQuery();
+		}
+
 		final StringBuilder sql = new StringBuilder();
 		final List<Object> params = new ArrayList<Object>();
 		if (tags == null || tags.length == 0) {
-			sql.append("1=1");
-			if (org != null) {
-				sql.append(" and (orgid=? or orgid is null)");
-				params.add(getIdParam(org));
-			}
+			sql.append("ownerid=?");
+			params.add(getIdParam(user));
 			return query(sql, params.toArray());
 		} else {
-			sql.append("select c.* from ").append(getTablename(Contacts.class))
+			sql.append("select c.* from ").append(getTablename(MyContacts.class))
 					.append(" c right join (select distinct contactsid from ")
 					.append(getTablename(ContactsTagR.class)).append(" where (");
 			int i = 0;
@@ -42,11 +46,8 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 				sql.append("tagid=?");
 				params.add(tag.getId());
 			}
-			sql.append(")) t on c.id=t.contactsid where 1=1");
-			if (org != null) {
-				sql.append(" and (c.orgid=? or c.orgid is null)");
-				params.add(getIdParam(org));
-			}
+			sql.append(")) t on c.id=t.contactsid where c.ownerid=?");
+			params.add(getIdParam(user));
 			return query(new SQLValue(sql, params.toArray()));
 		}
 	}

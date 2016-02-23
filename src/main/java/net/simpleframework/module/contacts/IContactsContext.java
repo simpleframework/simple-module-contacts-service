@@ -34,4 +34,6 @@ public interface IContactsContext extends IModuleContext {
 	IContactsTagRService getContactsTagRService();
 
 	IMyContactsTagService getMyContactsTagService();
+
+	IMyContactsService getMyContactsService();
 }

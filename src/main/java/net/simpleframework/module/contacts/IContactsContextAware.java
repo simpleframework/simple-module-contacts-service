@@ -21,6 +21,8 @@ public interface IContactsContextAware extends IModuleContextAware {
 	/* 标签关系服务 */
 	static IContactsTagRService _contactsTagRService = contactsContext.getContactsTagRService();
 
+	/* 我的联系人服务 */
+	static IMyContactsService _mycontactsService = contactsContext.getMyContactsService();
 	/* 我的联系人标签服务 */
 	static IMyContactsTagService _mycontactsTagService = contactsContext.getMyContactsTagService();
 }
