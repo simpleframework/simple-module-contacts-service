@@ -22,16 +22,21 @@ public class ContactsTagService extends AbstractContactsService<ContactsTag> imp
 
 	@Override
 	public ContactsTag addContactsTag(final ID orgId, final String text, final String description) {
-		return null;
+		final ContactsTag tag = createBean();
+		tag.setOrgId(orgId);
+		tag.setText(text);
+		tag.setDescription(description);
+		insert(tag);
+		return tag;
 	}
 
 	@Override
-	public IDataQuery<ContactsTag> queryTags(final ID orgId) {
+	public IDataQuery<ContactsTag> queryOrgTags(final Object org) {
 		final StringBuilder sb = new StringBuilder("1=1");
 		final List<Object> params = new ArrayList<Object>();
-		if (orgId != null) {
+		if (org != null) {
 			sb.append(" and (orgid=? or orgid is null)");
-			params.add(orgId);
+			params.add(getIdParam(org));
 		}
 		return query(sb, params.toArray());
 	}

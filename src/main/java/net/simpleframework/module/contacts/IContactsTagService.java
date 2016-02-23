@@ -26,8 +26,8 @@ public interface IContactsTagService extends IDbBeanService<ContactsTag> {
 	/**
 	 * 查询机构下标签
 	 * 
-	 * @param orgId
+	 * @param org
 	 * @return
 	 */
-	IDataQuery<ContactsTag> queryTags(ID orgId);
+	IDataQuery<ContactsTag> queryOrgTags(Object org);
 }
