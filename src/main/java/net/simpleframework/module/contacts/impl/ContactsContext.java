@@ -11,6 +11,7 @@ import net.simpleframework.module.contacts.IContactsContext;
 import net.simpleframework.module.contacts.IContactsService;
 import net.simpleframework.module.contacts.IContactsTagRService;
 import net.simpleframework.module.contacts.IContactsTagService;
+import net.simpleframework.module.contacts.IMyContactsTagService;
 import net.simpleframework.module.contacts.MyContacts;
 import net.simpleframework.module.contacts.MyContactsTag;
 
@@ -50,5 +51,10 @@ public class ContactsContext extends AbstractADOModuleContext implements IContac
 	@Override
 	public IContactsTagRService getContactsTagRService() {
 		return singleton(ContactsTagRService.class);
+	}
+
+	@Override
+	public IMyContactsTagService getMyContactsTagService() {
+		return singleton(MyContactsTagService.class);
 	}
 }

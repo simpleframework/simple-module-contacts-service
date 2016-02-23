@@ -13,8 +13,14 @@ public interface IContactsContextAware extends IModuleContextAware {
 
 	static final IContactsContext contactsContext = ModuleContextFactory.get(IContactsContext.class);
 
+	/* 我的联系人服务 */
 	static IContactsService _contactsService = contactsContext.getContactsService();
 
+	/* 联系人标签服务 */
 	static IContactsTagService _contactsTagService = contactsContext.getContactsTagService();
+	/* 标签关系服务 */
 	static IContactsTagRService _contactsTagRService = contactsContext.getContactsTagRService();
+
+	/* 我的联系人标签服务 */
+	static IMyContactsTagService _mycontactsTagService = contactsContext.getMyContactsTagService();
 }
