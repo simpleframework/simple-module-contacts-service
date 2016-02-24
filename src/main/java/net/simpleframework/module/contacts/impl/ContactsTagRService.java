@@ -3,10 +3,13 @@ package net.simpleframework.module.contacts.impl;
 import net.simpleframework.ado.IParamsValue;
 import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.common.Convert;
 import net.simpleframework.module.contacts.Contacts;
 import net.simpleframework.module.contacts.ContactsTag;
 import net.simpleframework.module.contacts.ContactsTagR;
 import net.simpleframework.module.contacts.IContactsTagRService;
+import net.simpleframework.module.contacts.MyContacts;
+import net.simpleframework.module.contacts.MyContactsTag;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -23,6 +26,7 @@ public class ContactsTagRService extends AbstractContactsService<ContactsTagR> i
 		final ContactsTagR tagr = createBean();
 		tagr.setContactsId(contacts.getId());
 		tagr.setTagId(tag.getId());
+		tagr.setAttr("_MY_CONTACTS", contacts instanceof MyContacts);
 		insert(tagr);
 		return tagr;
 	}
@@ -56,9 +60,16 @@ public class ContactsTagRService extends AbstractContactsService<ContactsTagR> i
 			}
 
 			void doStat_contacts(final ContactsTagR tagr, final int delta) {
-				final ContactsTag tag = _contactsTagService.getBean(tagr.getTagId());
-				tag.setContacts(count("tagid=?", tag.getId()) + delta);
-				_contactsTagService.update(new String[] { "contacts" }, tag);
+				ContactsTag tag;
+				if (Convert.toBool(tagr.getAttr("_MY_CONTACTS"))) {
+					tag = _mycontactsTagService.getBean(tagr.getTagId());
+					tag.setContacts(count("tagid=?", tag.getId()) + delta);
+					_mycontactsTagService.update(new String[] { "contacts" }, (MyContactsTag) tag);
+				} else {
+					tag = _contactsTagService.getBean(tagr.getTagId());
+					tag.setContacts(count("tagid=?", tag.getId()) + delta);
+					_contactsTagService.update(new String[] { "contacts" }, tag);
+				}
 			}
 		});
 	}
