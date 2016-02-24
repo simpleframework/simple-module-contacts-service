@@ -3,6 +3,8 @@ package net.simpleframework.module.contacts.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.simpleframework.ado.IParamsValue;
+import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.ado.db.common.SQLValue;
 import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.module.contacts.Contacts;
@@ -26,8 +28,10 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 		if (tags == null || tags.length == 0) {
 			sql.append("1=1");
 			if (org != null) {
-				sql.append(" and (orgid=? or orgid is null)");
+				sql.append(" and orgid=?");
 				params.add(getIdParam(org));
+			} else {
+				sql.append(" and orgid is null");
 			}
 			return query(sql, params.toArray());
 		} else {
@@ -44,10 +48,29 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 			}
 			sql.append(")) t on c.id=t.contactsid where 1=1");
 			if (org != null) {
-				sql.append(" and (c.orgid=? or c.orgid is null)");
+				sql.append(" and c.orgid=?");
 				params.add(getIdParam(org));
+			} else {
+				sql.append(" and c.orgid is null");
 			}
 			return query(new SQLValue(sql, params.toArray()));
 		}
+	}
+
+	@Override
+	public void onInit() throws Exception {
+		super.onInit();
+
+		addListener(new DbEntityAdapterEx<Contacts>() {
+			@Override
+			public void onBeforeDelete(final IDbEntityManager<Contacts> manager,
+					final IParamsValue paramsValue) throws Exception {
+				super.onBeforeDelete(manager, paramsValue);
+				for (final Contacts contacts : coll(manager, paramsValue)) {
+					// 删除标签关联
+					_contactsTagRService.deleteWith("contactsid=?", contacts.getId());
+				}
+			}
+		});
 	}
 }

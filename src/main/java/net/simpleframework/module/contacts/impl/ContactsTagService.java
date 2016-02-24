@@ -54,7 +54,6 @@ public class ContactsTagService extends AbstractContactsService<ContactsTag> imp
 				for (final ContactsTag tag : coll(manager, paramsValue)) {
 					// 不在同一个域内
 					assetDomainId_delete(tag.getOrgId());
-
 					// 删除关系
 					_contactsTagRService.deleteWith("tagid=?", tag.getId());
 				}

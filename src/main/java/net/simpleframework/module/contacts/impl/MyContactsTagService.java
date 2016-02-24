@@ -58,7 +58,6 @@ public class MyContactsTagService extends AbstractContactsService<MyContactsTag>
 			public void onBeforeDelete(final IDbEntityManager<MyContactsTag> manager,
 					final IParamsValue paramsValue) throws Exception {
 				super.onBeforeDelete(manager, paramsValue);
-
 				for (final MyContactsTag tag : coll(manager, paramsValue)) {
 					// 删除关系
 					_contactsTagRService.deleteWith("tagid=?", tag.getId());
