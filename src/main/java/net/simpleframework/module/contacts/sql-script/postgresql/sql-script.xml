@@ -82,7 +82,8 @@
         description varchar (256),
         userid char (32),
         deptid char (32),
-        primary key (id)
+        primary key (id),
+        unique (ownerid, text)
       );
     ]]>
   </tran-sql>
