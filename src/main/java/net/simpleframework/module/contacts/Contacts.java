@@ -15,6 +15,8 @@ public class Contacts extends AbstractTextDescriptionBean {
 	/* 机构id */
 	private ID orgId;
 
+	/* 拼音 */
+	private String py;
 	/* 性别 */
 	private String sex;
 	/* 生日 */
@@ -64,6 +66,14 @@ public class Contacts extends AbstractTextDescriptionBean {
 
 	public void setOrgId(final ID orgId) {
 		this.orgId = orgId;
+	}
+
+	public String getPy() {
+		return py;
+	}
+
+	public void setPy(final String py) {
+		this.py = py;
 	}
 
 	public String getSex() {
