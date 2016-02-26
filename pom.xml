@@ -15,5 +15,10 @@
       <groupId>net.simpleframework</groupId>
       <artifactId>simple-module-common</artifactId>
     </dependency>
+    
+    <dependency>
+      <groupId>com.belerweb</groupId>
+      <artifactId>pinyin4j</artifactId>
+    </dependency>
   </dependencies>
 </project>

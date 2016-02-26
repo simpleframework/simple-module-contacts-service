@@ -4,6 +4,7 @@ import java.util.Date;
 
 import net.simpleframework.ado.bean.AbstractTextDescriptionBean;
 import net.simpleframework.common.ID;
+import net.simpleframework.common.Pinyin;
 
 /**
  * Licensed under the Apache License, Version 2.0
@@ -66,6 +67,12 @@ public class Contacts extends AbstractTextDescriptionBean {
 
 	public void setOrgId(final ID orgId) {
 		this.orgId = orgId;
+	}
+
+	@Override
+	public void setText(final String text) {
+		super.setText(text);
+		setPy(Pinyin.toPinYin(text));
 	}
 
 	public String getPy() {
