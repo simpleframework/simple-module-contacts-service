@@ -43,7 +43,7 @@ public class ContactsTagService extends AbstractContactsService<ContactsTag> imp
 				sb.append(" and orgid is null");
 			}
 		}
-		return query(sb, params.toArray());
+		return query(sb.append(" order by oorder desc"), params.toArray());
 	}
 
 	@Override

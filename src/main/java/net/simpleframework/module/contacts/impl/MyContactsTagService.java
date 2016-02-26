@@ -46,7 +46,7 @@ public class MyContactsTagService extends AbstractContactsService<MyContactsTag>
 		if (user == null) {
 			return DataQueryUtils.nullQuery();
 		}
-		return query("ownerid=?", getIdParam(user));
+		return query("ownerid=? order by oorder desc", getIdParam(user));
 	}
 
 	@Override
