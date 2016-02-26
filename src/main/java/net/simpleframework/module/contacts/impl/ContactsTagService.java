@@ -7,6 +7,7 @@ import net.simpleframework.ado.IParamsValue;
 import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.ado.query.IDataQuery;
 import net.simpleframework.common.ID;
+import net.simpleframework.ctx.permission.LoginUser;
 import net.simpleframework.module.contacts.ContactsTag;
 import net.simpleframework.module.contacts.IContactsTagService;
 
@@ -37,8 +38,33 @@ public class ContactsTagService extends AbstractContactsService<ContactsTag> imp
 		if (org != null) {
 			sb.append(" and (orgid=? or orgid is null)");
 			params.add(getIdParam(org));
+		} else {
+			if (!LoginUser.isManager()) {
+				sb.append(" and orgid is null");
+			}
 		}
 		return query(sb, params.toArray());
+	}
+
+	@Override
+	public ContactsTag getContactsTag(final Object org, final String text, final boolean create) {
+		final StringBuilder sb = new StringBuilder("text=?");
+		final List<Object> params = new ArrayList<Object>();
+		params.add(text);
+
+		final ID orgId = getPermission().getDept(getIdParam(org)).getId();
+		if (orgId != null) {
+			sb.append(" org=?");
+			params.add(orgId);
+		} else {
+			sb.append(" org is null");
+		}
+
+		ContactsTag tag = getBean(sb.toString(), params.toArray());
+		if (create && tag == null) {
+			tag = addContactsTag(orgId, text, null);
+		}
+		return tag;
 	}
 
 	@Override

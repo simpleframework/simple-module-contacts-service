@@ -30,4 +30,6 @@ public interface IContactsTagService extends IDbBeanService<ContactsTag> {
 	 * @return
 	 */
 	IDataQuery<ContactsTag> queryOrgTags(Object org);
+
+	ContactsTag getContactsTag(Object org, String text, boolean create);
 }
