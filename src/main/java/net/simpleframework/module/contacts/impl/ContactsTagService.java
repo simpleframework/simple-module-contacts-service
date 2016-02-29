@@ -54,10 +54,10 @@ public class ContactsTagService extends AbstractContactsService<ContactsTag> imp
 
 		final ID orgId = getPermission().getDept(getIdParam(org)).getId();
 		if (orgId != null) {
-			sb.append(" org=?");
+			sb.append(" and orgid=?");
 			params.add(orgId);
 		} else {
-			sb.append(" org is null");
+			sb.append(" and orgid is null");
 		}
 
 		ContactsTag tag = getBean(sb.toString(), params.toArray());
