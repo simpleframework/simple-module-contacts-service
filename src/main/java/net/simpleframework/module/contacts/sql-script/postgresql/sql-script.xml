@@ -28,7 +28,9 @@
         description varchar (256),
         userid char (32),
         deptid char (32),
-        primary key (id)
+        oorder int4 not null,
+        primary key (id),
+        unique (oorder)
       );
     ]]>
   </tran-sql>
@@ -84,8 +86,10 @@
         description varchar (256),
         userid char (32),
         deptid char (32),
+        oorder int4 not null,
         primary key (id),
-        unique (ownerid, text)
+        unique (ownerid, text),
+        unique (oorder)
       );
     ]]>
   </tran-sql>

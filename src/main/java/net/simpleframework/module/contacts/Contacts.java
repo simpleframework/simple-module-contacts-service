@@ -3,6 +3,7 @@ package net.simpleframework.module.contacts;
 import java.util.Date;
 
 import net.simpleframework.ado.bean.AbstractTextDescriptionBean;
+import net.simpleframework.ado.bean.IOrderBeanAware;
 import net.simpleframework.common.ID;
 import net.simpleframework.common.Pinyin;
 
@@ -12,7 +13,7 @@ import net.simpleframework.common.Pinyin;
  * @author 陈侃(cknet@126.com, 13910090885) https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class Contacts extends AbstractTextDescriptionBean {
+public class Contacts extends AbstractTextDescriptionBean implements IOrderBeanAware {
 	/* 机构id */
 	private ID orgId;
 
@@ -60,6 +61,9 @@ public class Contacts extends AbstractTextDescriptionBean {
 	private ID userId;
 	/* 部门id，如果有帐号，则关联 */
 	private ID deptId;
+
+	/** 排序 **/
+	private int oorder;
 
 	public ID getOrgId() {
 		return orgId;
@@ -217,6 +221,16 @@ public class Contacts extends AbstractTextDescriptionBean {
 
 	public void setDeptId(final ID deptId) {
 		this.deptId = deptId;
+	}
+
+	@Override
+	public int getOorder() {
+		return oorder;
+	}
+
+	@Override
+	public void setOorder(final int oorder) {
+		this.oorder = oorder;
 	}
 
 	private static final long serialVersionUID = 3940756391544046769L;
