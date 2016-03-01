@@ -7,6 +7,7 @@ import net.simpleframework.ado.IParamsValue;
 import net.simpleframework.ado.db.IDbEntityManager;
 import net.simpleframework.ado.db.common.SQLValue;
 import net.simpleframework.ado.query.IDataQuery;
+import net.simpleframework.common.StringUtils;
 import net.simpleframework.module.contacts.Contacts;
 import net.simpleframework.module.contacts.ContactsTag;
 import net.simpleframework.module.contacts.ContactsTagR;
@@ -23,8 +24,17 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 
 	@Override
 	public IDataQuery<Contacts> queryContacts(final Object org, final ContactsTag... tags) {
+		return queryContacts(org, null, tags);
+	}
+
+	@Override
+	public IDataQuery<Contacts> queryContacts(final Object org, final String pingyin,
+			final ContactsTag... tags) {
+		final String[] arr = StringUtils.split(pingyin, ";");
+
 		final StringBuilder sql = new StringBuilder();
 		final List<Object> params = new ArrayList<Object>();
+
 		if (tags == null || tags.length == 0) {
 			sql.append("1=1");
 			if (org != null) {
@@ -32,6 +42,18 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 				params.add(getIdParam(org));
 			} else {
 				sql.append(" and orgid is null");
+			}
+
+			if (arr.length > 0) {
+				sql.append(" and (");
+				int i = 0;
+				for (final String l : arr) {
+					if (i++ > 0) {
+						sql.append(" or ");
+					}
+					sql.append(" py like '").append(l.toLowerCase()).append("%'");
+				}
+				sql.append(")");
 			}
 			return query(sql, params.toArray());
 		} else {
@@ -52,6 +74,18 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 				params.add(getIdParam(org));
 			} else {
 				sql.append(" and c.orgid is null");
+			}
+
+			if (arr.length > 0) {
+				sql.append(" and (");
+				i = 0;
+				for (final String l : arr) {
+					if (i++ > 0) {
+						sql.append(" or ");
+					}
+					sql.append(" c.py like '").append(l.toLowerCase()).append("%'");
+				}
+				sql.append(")");
 			}
 			return query(new SQLValue(sql, params.toArray()));
 		}
