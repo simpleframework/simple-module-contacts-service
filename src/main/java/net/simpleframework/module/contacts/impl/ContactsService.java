@@ -55,7 +55,7 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 				}
 				sql.append(")");
 			}
-			return query(sql.append("order by oorder desc"), params.toArray());
+			return query(sql.append("order by oorder asc"), params.toArray());
 		} else {
 			sql.append("select c.* from ").append(getTablename(Contacts.class))
 					.append(" c right join (select distinct contactsid from ")
@@ -87,7 +87,7 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 				}
 				sql.append(")");
 			}
-			return query(new SQLValue(sql.append("order by c.oorder desc"), params.toArray()));
+			return query(new SQLValue(sql.append("order by c.oorder asc"), params.toArray()));
 		}
 	}
 

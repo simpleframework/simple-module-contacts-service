@@ -35,7 +35,7 @@ public class MyContactsService extends AbstractContactsService<MyContacts> imple
 		if (tags == null || tags.length == 0) {
 			sql.append("ownerid=?");
 			params.add(getIdParam(user));
-			return query(sql.append("order by oorder desc"), params.toArray());
+			return query(sql.append("order by oorder asc"), params.toArray());
 		} else {
 			sql.append("select c.* from ").append(getTablename(MyContacts.class))
 					.append(" c right join (select distinct contactsid from ")
@@ -50,7 +50,7 @@ public class MyContactsService extends AbstractContactsService<MyContacts> imple
 			}
 			sql.append(")) t on c.id=t.contactsid where c.ownerid=?");
 			params.add(getIdParam(user));
-			return query(new SQLValue(sql.append("order by c.oorder desc"), params.toArray()));
+			return query(new SQLValue(sql.append("order by c.oorder asc"), params.toArray()));
 		}
 	}
 
