@@ -20,7 +20,7 @@ public class ContactsTagRService extends AbstractContactsService<ContactsTagR> i
 		IContactsTagRService {
 
 	@Override
-	public ContactsTagR addSubjectTagR(final Contacts contacts, final ContactsTag tag) {
+	public ContactsTagR addContactsTagR(final Contacts contacts, final ContactsTag tag) {
 		final ContactsTagR tagr = createBean();
 		tagr.setContactsId(contacts.getId());
 		tagr.setTagId(tag.getId());

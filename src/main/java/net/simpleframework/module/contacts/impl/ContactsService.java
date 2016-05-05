@@ -24,12 +24,12 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 
 	@Override
 	public IDataQuery<Contacts> queryContacts(final Object org, final ContactsTag... tags) {
-		return queryContacts(org, null, tags);
+		return queryContacts(org, null, null, tags);
 	}
 
 	@Override
-	public IDataQuery<Contacts> queryContacts(final Object org, final String pingyin,
-			final ContactsTag... tags) {
+	public IDataQuery<Contacts> queryContacts(final Object org, final Object dept,
+			final String pingyin, final ContactsTag... tags) {
 		final String[] arr = StringUtils.split(pingyin, ";");
 
 		final StringBuilder sql = new StringBuilder();
@@ -42,6 +42,11 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 				params.add(getIdParam(org));
 			} else {
 				sql.append(" and orgid is null");
+			}
+
+			if (StringUtils.hasObject(dept)) {
+				sql.append(" and deptid=?");
+				params.add(getIdParam(dept));
 			}
 
 			if (arr.length > 0) {
@@ -74,6 +79,11 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 				params.add(getIdParam(org));
 			} else {
 				sql.append(" and c.orgid is null");
+			}
+
+			if (StringUtils.hasObject(dept)) {
+				sql.append(" and c.deptid=?");
+				params.add(getIdParam(dept));
 			}
 
 			if (arr.length > 0) {

@@ -61,7 +61,8 @@ public class ContactsTagService extends AbstractContactsService<ContactsTag> imp
 		}
 
 		ContactsTag tag = getBean(sb.toString(), params.toArray());
-		if (create && tag == null) {
+		// 机构为空时不自动创建
+		if (create && tag == null && orgId != null) {
 			tag = addContactsTag(orgId, text, null);
 		}
 		return tag;

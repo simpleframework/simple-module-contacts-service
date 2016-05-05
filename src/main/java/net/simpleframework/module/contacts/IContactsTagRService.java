@@ -11,7 +11,7 @@ import net.simpleframework.ctx.service.ado.db.IDbBeanService;
  */
 public interface IContactsTagRService extends IDbBeanService<ContactsTagR> {
 
-	ContactsTagR addSubjectTagR(Contacts contacts, ContactsTag tag);
+	ContactsTagR addContactsTagR(Contacts contacts, ContactsTag tag);
 
 	/**
 	 * 获取联系人标签
