@@ -28,6 +28,8 @@ public class Contacts extends AbstractTextDescriptionBean implements IOrderBeanA
 	private String dept;
 	/* 职务 */
 	private String job;
+	/* 昵称 */
+	private String nick;
 
 	/* 联系电话 */
 	private String email;
@@ -117,6 +119,14 @@ public class Contacts extends AbstractTextDescriptionBean implements IOrderBeanA
 
 	public void setJob(final String job) {
 		this.job = job;
+	}
+
+	public String getNick() {
+		return nick;
+	}
+
+	public void setNick(final String nick) {
+		this.nick = nick;
 	}
 
 	public String getEmail() {
