@@ -63,6 +63,8 @@ public class Contacts extends AbstractTextDescriptionBean implements IOrderBeanA
 	private ID userId;
 	/* 部门id，如果有帐号，则关联 */
 	private ID deptId;
+	/* 部门字典 */
+	private String deptDict;
 
 	/** 排序 **/
 	private int oorder;
@@ -231,6 +233,14 @@ public class Contacts extends AbstractTextDescriptionBean implements IOrderBeanA
 
 	public void setDeptId(final ID deptId) {
 		this.deptId = deptId;
+	}
+
+	public String getDeptDict() {
+		return deptDict;
+	}
+
+	public void setDeptDict(final String deptDict) {
+		this.deptDict = deptDict;
 	}
 
 	@Override

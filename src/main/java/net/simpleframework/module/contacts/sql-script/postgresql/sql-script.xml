@@ -29,6 +29,7 @@
         description varchar (256),
         userid char (32),
         deptid char (32),
+        deptdict varchar (64),
         oorder int4 not null,
         primary key (id),
         unique (oorder)
@@ -88,6 +89,7 @@
         description varchar (256),
         userid char (32),
         deptid char (32),
+        deptdict varchar (64),
         oorder int4 not null,
         primary key (id),
         unique (ownerid, text),
