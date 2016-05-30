@@ -36,7 +36,7 @@ public class ContactsContext extends AbstractADOModuleContext implements IContac
 
 	@Override
 	protected Module createModule() {
-		return new Module().setName(MODULE_NAME).setText($m("ContactsContext.0")).setOrder(3);
+		return super.createModule().setName(MODULE_NAME).setText($m("ContactsContext.0")).setOrder(3);
 	}
 
 	@Override
