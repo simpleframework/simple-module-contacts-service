@@ -24,6 +24,9 @@ public class Contacts extends AbstractTextDescriptionBean implements IOrderBeanA
 	/* 生日 */
 	private Date birthday;
 
+	/* 民族 */
+	private String nation;
+
 	/* 所在部门 */
 	private String dept;
 	/* 职务 */
@@ -105,6 +108,14 @@ public class Contacts extends AbstractTextDescriptionBean implements IOrderBeanA
 
 	public void setBirthday(final Date birthday) {
 		this.birthday = birthday;
+	}
+
+	public String getNation() {
+		return nation;
+	}
+
+	public void setNation(final String nation) {
+		this.nation = nation;
 	}
 
 	public String getDept() {
