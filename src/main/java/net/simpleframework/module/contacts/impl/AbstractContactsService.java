@@ -12,6 +12,6 @@ import net.simpleframework.module.contacts.IContactsContextAware;
  *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public abstract class AbstractContactsService<T extends Serializable> extends
-		AbstractDbBeanService<T> implements IContactsContextAware {
+public abstract class AbstractContactsService<T extends Serializable>
+		extends AbstractDbBeanService<T> implements IContactsContextAware {
 }

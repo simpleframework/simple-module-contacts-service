@@ -21,8 +21,8 @@ import net.simpleframework.module.contacts.MyContactsTag;
  *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class MyContactsService extends AbstractContactsService<MyContacts> implements
-		IMyContactsService {
+public class MyContactsService extends AbstractContactsService<MyContacts>
+		implements IMyContactsService {
 
 	@Override
 	public IDataQuery<MyContacts> queryMyContacts(final Object user, final MyContactsTag... tags) {

@@ -12,14 +12,15 @@ import net.simpleframework.ctx.service.ado.db.IDbBeanService;
 public interface IContactsService extends IDbBeanService<Contacts> {
 
 	/**
-	 * 
 	 * @param org
 	 * @param dept
+	 * @param deptDict
 	 * @param pingyin
 	 * @param tags
 	 * @return
 	 */
-	IDataQuery<Contacts> queryContacts(Object org, Object dept, String pingyin, ContactsTag... tags);
+	IDataQuery<Contacts> queryContacts(Object org, Object dept, String deptDict, String pingyin,
+			ContactsTag... tags);
 
 	IDataQuery<Contacts> queryContacts(Object org, ContactsTag... tags);
 }

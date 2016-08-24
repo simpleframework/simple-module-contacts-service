@@ -16,11 +16,12 @@ import net.simpleframework.module.contacts.MyContactsTag;
  *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class MyContactsTagService extends AbstractContactsService<MyContactsTag> implements
-		IMyContactsTagService {
+public class MyContactsTagService extends AbstractContactsService<MyContactsTag>
+		implements IMyContactsTagService {
 
 	@Override
-	public MyContactsTag addContactsTag(final ID userId, final String text, final String description) {
+	public MyContactsTag addContactsTag(final ID userId, final String text,
+			final String description) {
 		final MyContactsTag tag = createBean();
 		final PermissionUser user = getPermission().getUser(userId);
 		tag.setOwnerId(user.getId());
@@ -32,7 +33,8 @@ public class MyContactsTagService extends AbstractContactsService<MyContactsTag>
 	}
 
 	@Override
-	public MyContactsTag getMyContactsTag(final Object user, final String text, final boolean create) {
+	public MyContactsTag getMyContactsTag(final Object user, final String text,
+			final boolean create) {
 		final Object userId = getIdParam(user);
 		MyContactsTag tag = getBean("ownerid=? and text=?", userId, text);
 		if (create && tag == null) {

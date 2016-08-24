@@ -18,8 +18,8 @@ import net.simpleframework.module.contacts.IContactsTagService;
  *         https://github.com/simpleframework
  *         http://www.simpleframework.net
  */
-public class ContactsTagService extends AbstractContactsService<ContactsTag> implements
-		IContactsTagService {
+public class ContactsTagService extends AbstractContactsService<ContactsTag>
+		implements IContactsTagService {
 
 	@Override
 	public ContactsTag addContactsTag(final ID orgId, final String text, final String description) {
