@@ -24,12 +24,12 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 
 	@Override
 	public IDataQuery<Contacts> queryContacts(final Object org, final ContactsTag... tags) {
-		return queryContacts(org, null, null, tags);
+		return queryContacts(org, null, null, null, tags);
 	}
 
 	@Override
 	public IDataQuery<Contacts> queryContacts(final Object org, final Object dept,
-			final String pingyin, final ContactsTag... tags) {
+			final String deptDict, final String pingyin, final ContactsTag... tags) {
 		final String[] arr = StringUtils.split(pingyin, ";");
 
 		final StringBuilder sql = new StringBuilder();
@@ -47,6 +47,9 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 			if (StringUtils.hasObject(dept)) {
 				sql.append(" and deptid=?");
 				params.add(getIdParam(dept));
+			} else if (StringUtils.hasText(deptDict)) {
+				sql.append(" and deptDict=?");
+				params.add(deptDict);
 			}
 
 			if (arr.length > 0) {
@@ -84,6 +87,9 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 			if (StringUtils.hasObject(dept)) {
 				sql.append(" and c.deptid=?");
 				params.add(getIdParam(dept));
+			} else if (StringUtils.hasText(deptDict)) {
+				sql.append(" and c.deptDict=?");
+				params.add(deptDict);
 			}
 
 			if (arr.length > 0) {
