@@ -31,7 +31,7 @@ public class MyContactsService extends AbstractContactsService<MyContacts>
 		}
 
 		final StringBuilder sql = new StringBuilder();
-		final List<Object> params = new ArrayList<Object>();
+		final List<Object> params = new ArrayList<>();
 		if (tags == null || tags.length == 0) {
 			sql.append("ownerid=?");
 			params.add(getIdParam(user));

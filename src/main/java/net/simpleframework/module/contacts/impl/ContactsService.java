@@ -33,7 +33,7 @@ public class ContactsService extends AbstractContactsService<Contacts> implement
 		final String[] arr = StringUtils.split(pingyin, ";");
 
 		final StringBuilder sql = new StringBuilder();
-		final List<Object> params = new ArrayList<Object>();
+		final List<Object> params = new ArrayList<>();
 
 		if (tags == null || tags.length == 0) {
 			sql.append("1=1");

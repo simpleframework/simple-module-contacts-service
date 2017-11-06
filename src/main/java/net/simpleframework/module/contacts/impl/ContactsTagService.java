@@ -34,7 +34,7 @@ public class ContactsTagService extends AbstractContactsService<ContactsTag>
 	@Override
 	public IDataQuery<ContactsTag> queryOrgTags(final Object org) {
 		final StringBuilder sb = new StringBuilder("1=1");
-		final List<Object> params = new ArrayList<Object>();
+		final List<Object> params = new ArrayList<>();
 		if (org != null) {
 			sb.append(" and (orgid=? or orgid is null)");
 			params.add(getIdParam(org));
@@ -49,7 +49,7 @@ public class ContactsTagService extends AbstractContactsService<ContactsTag>
 	@Override
 	public ContactsTag getContactsTag(final Object org, final String text, final boolean create) {
 		final StringBuilder sb = new StringBuilder("text=?");
-		final List<Object> params = new ArrayList<Object>();
+		final List<Object> params = new ArrayList<>();
 		params.add(text);
 
 		final ID orgId = getPermission().getDept(getIdParam(org)).getId();
